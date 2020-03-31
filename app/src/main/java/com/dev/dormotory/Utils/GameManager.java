@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.provider.SyncStateContract;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
@@ -21,20 +22,21 @@ import static com.dev.dormotory.GameActivity.COUNT_ITEMS;
 import static com.dev.dormotory.Utils.BottomSheet.getResourseId;
 
 public class GameManager {
-    String TAG = "GAMEMANAGER";
-    ImageView[] gameViews;
-    boolean[] activeItem;
-    Runnable r;
-    Context context;
-    Activity activity;
-    TextView scoreView,levelView,timeView;
-    int activeCount = 0;
-    int level = 0;
+    private String TAG = "GAMEMANAGER";
+    private ImageView[] gameViews;
+    private boolean[] activeItem;
+    private Runnable r;
+    private Context context;
+    private float height;
+    private Activity activity;
+    private TextView scoreView,levelView,timeView;
+    private int activeCount = 0;
+    private int level = 0;
     private OnGameOverListner onGameOverListner;
-    int score = 0;
-    int timeForItem = 700;
-    int ResImageOff = R.drawable.game_resoff;
-    int ResImageOn = R.drawable.bonuspack_bubble;
+    private int score = 0;
+    private int timeForItem = 700;
+    private int ResImageOff = R.drawable.game_resoff;
+    private int ResImageOn = R.drawable.game_reson;
 
     public GameManager(Activity activity){
         context = activity;
@@ -44,16 +46,27 @@ public class GameManager {
         scoreView = activity.findViewById(R.id.scope);
         timeView = activity.findViewById(R.id.time);
         levelView = activity.findViewById(R.id.level);
+        height = 100* (context.getResources().getDisplayMetrics().density);
         initGameView();
     }
 
     private void initGameView() {
         for (int i=0;i<COUNT_ITEMS;i++) {
             gameViews[i] = activity.findViewById(getResourseId(context, "item_" + String.valueOf(i), context.getPackageName()));
-            activeItem[i] = false;
+            ViewGroup.LayoutParams params = gameViews[i].getLayoutParams();
+// Changes the height and width to the specified *pixels*
+            params.height = (int) height;
+            params.width = (int) height;
+            gameViews[i].setLayoutParams(params);
+
         }
+        clearArray();
     }
 
+    private void clearArray(){
+        for (int i=0;i<COUNT_ITEMS;i++)
+        activeItem[i] = false;
+    }
     boolean checkActive(){
         return getActiveCount() != 0;
     }
@@ -148,6 +161,7 @@ public class GameManager {
 //           try {
                if (!checkActive()) {
                    nextLevel();
+                   clearArray();
                    Log.e(TAG, "play: " );
                    settingViews();
                    int time;
@@ -185,7 +199,7 @@ public class GameManager {
         initGameView();
         play();
     }
-    void GameOver(){
+    private void GameOver(){
         Log.e(TAG, "GameOver " );
         if(onGameOverListner != null)
             onGameOverListner.OnGameOver(score);
