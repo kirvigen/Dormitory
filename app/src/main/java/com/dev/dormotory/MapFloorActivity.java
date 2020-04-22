@@ -9,7 +9,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class MapFloorActivity extends AppCompatActivity {
-    String url = "https://yandex.ru";
     WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,7 @@ public class MapFloorActivity extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         SimpleWebViewClient webViewClient = new SimpleWebViewClient();
         webView.setWebViewClient(webViewClient);
-        webView.loadUrl(url);
+        webView.loadUrl(getResources().getString(R.string.urlETAJI));
 
     }
     public class SimpleWebViewClient extends WebViewClient {

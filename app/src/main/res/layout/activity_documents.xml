@@ -17,6 +17,7 @@
             android:id="@+id/back"
             android:layout_marginLeft="5dp"
             android:tint="#fff"
+            android:padding="4dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:layout_gravity="center"
@@ -25,7 +26,7 @@
             android:layout_height="45dp"/>
         <TextView
             android:layout_marginLeft="5dp"
-            android:textSize="25sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:fontFamily="@raw/font"
             android:textColor="#fff"
@@ -59,7 +60,7 @@
                 android:textSize="18sp"
                 android:textColor="#000"
                 android:lines="1"
-                android:text="Правила прожиавния в общежитии"
+                android:text="Правила проживания в общежитии"
                 android:fontFamily="@raw/font"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

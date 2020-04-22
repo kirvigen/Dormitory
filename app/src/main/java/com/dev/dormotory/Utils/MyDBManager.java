@@ -4,10 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Color;
+
 import android.util.Log;
-import android.util.LogPrinter;
-import android.widget.ArrayAdapter;
 
 import com.dev.dormotory.Obj.Category;
 import com.dev.dormotory.Obj.Point;
@@ -19,7 +17,7 @@ import java.util.List;
 import static android.content.ContentValues.TAG;
 //Данные и работа с ними
 public class MyDBManager extends SQLiteOpenHelper {
-    static public String databaseName = "Vokrug.db";
+     static public String databaseName = "Vokrug.db";
      String[] NAMETABLES = new String[]{"Apteky","Gosuslugi","MagazynByta","Medical",
             "Poest","Producty","Razvlecheniya","Sport","University","Uslugi"};
      public static  String[] NAMES = new String[]{"Аптеки","Гос. учереждения","Магазины быта","Медицина","Поесть",
@@ -104,18 +102,17 @@ public class MyDBManager extends SQLiteOpenHelper {
         }
         Log.d(TAG, "onCreate: Таблицы созданы");
         String sqlCreate1 = "INSERT INTO "+NAMETABLES[0]+" (`id`, `lat`, `lng`, `type`, `podtype`, `nameO`, `Address`, `comment`) VALUES\n" +
-                "(1, '59.945747', '30.483548', 'Аптеки', '', 'Озерки', 'ул. Осипенко 2', 'круглосуточная'),\n" +
+                "(1, '59.945747', '30.483548', 'Аптеки', '', 'Живика', 'ул. Осипенко 2', ''),\n" +
                 "(2, '59.944373', '30.47929', 'Аптеки', '', 'Вита', 'пр. Индустриальный 19', ''),\n" +
-                "(3, '59.938604', '30.477655', 'Аптеки', '', 'Озерки', 'пр. Индустриальный 11 к. 1', ''),\n" +
-                "(4, '59.945747', '30.483548', 'Аптеки', '', 'Живика', 'ул. Осипенко 2', ''),\n" +
+                "(3, '59.938604', '30.477655', 'Аптеки', '', 'Озерки', 'пр. Индустриальный 11 к. 1', 'круглосуточная'),\n" +
+                "(4, '59.945747', '30.483548', 'Аптеки', '', 'Озерки', 'ул. Осипенко 2', ''),\n" +
                 "(5, '59.945594', '30.486296', 'Аптеки', '', 'Первая помощь', 'пр. Косыгина 26', '')\n";
         db.execSQL(sqlCreate1);
         String sqlCreate2 = "INSERT INTO "+NAMETABLES[1]+" (`id`, `lat`, `lng`, `type`, `podtype`, `nameO`, `Address`, `comment`) VALUES\n" +
                 "(1, '59.934006', '30.409131', 'Гос. учереждения', '', 'Военкомат', 'Республиканская 16', ''),\n" +
                 "(2, '59.938847', '30.485802', 'Гос. учереждения', '', 'МФЦ', 'пр. Наставников 6 к. 2', ''),\n" +
-                "(3, '59.937752', '30.472121', 'Гос. учереждения', '', 'Отдел полиции №13', 'ул. Передовиков 3', ''),\n" +
                 "(4, '59.953903', '30.41471', 'Гос. учереждения', '', 'Налоговая', 'пр. Среднеохтинский 34/12', ''),\n" +
-                "(5, '59.937752', '30.472121', 'Гос. учереждения', '', 'Паспортный стол', 'ул. Передовиков 3', '')";
+                "(5, '59.937752', '30.472121', 'Гос. учереждения', '', 'Отдел полиции №13 и Паспортный стол', 'ул. Передовиков 3', '')";
         db.execSQL(sqlCreate2);
         String sqlCreate3 = "INSERT INTO "+NAMETABLES[2]+" (`id`, `lat`, `lng`, `type`, `podtype`, `nameO`, `Address`, `comment`) VALUES\n" +
                 "(1, '59.944431', '30.48335', 'Магазины быта', 'Строительный магазин', 'Народный', 'Косыгина 21', 'В хозяйственных целях норм' ),\n" +
@@ -193,6 +190,7 @@ public class MyDBManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
 
     }
 

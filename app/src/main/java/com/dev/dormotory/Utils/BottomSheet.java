@@ -61,7 +61,6 @@ public class BottomSheet {
                     onClosed.OnEnd();
                 }
             }
-
             @Override
             public void onSlide(@NonNull View view, float v) {
 
@@ -127,6 +126,7 @@ public class BottomSheet {
         animateView(0,()->{
             back.setOnClickListener(view->{});
         },back);
+
         categoryView.setVisibility(View.VISIBLE);
         animateView(0,()->{
             animateView(1,null,categoryView);

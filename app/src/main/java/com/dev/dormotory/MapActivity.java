@@ -38,6 +38,7 @@ public class MapActivity extends AppCompatActivity {
     TextView name_select;
     CustomPoint customPoint;
     Category active_category;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

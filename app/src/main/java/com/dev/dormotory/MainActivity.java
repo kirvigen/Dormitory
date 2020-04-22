@@ -26,21 +26,25 @@ public class MainActivity extends AppCompatActivity {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         });
+
         mapfloor.setOnClickListener(v->{
             Intent intent = new Intent(this,MapFloorActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         });
+
         documents.setOnClickListener(v->{
             Intent intent = new Intent(this,DocumentsActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         });
+
         map.setOnClickListener(v->{
             Intent intent = new Intent(this,MapActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         });
+
         game.setOnClickListener(v->{
             Intent intent = new Intent(this, GameActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
